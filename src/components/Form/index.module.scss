@@ -1,0 +1,8 @@
+@use "../../scss/" as *;
+
+.form {
+	@include flex(center, center);
+	flex-direction: column;
+	gap: 25px;
+	width: 100%;
+}

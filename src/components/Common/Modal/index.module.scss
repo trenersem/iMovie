@@ -1,0 +1,84 @@
+@use "../../../scss/" as *;
+
+.modal {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9997;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transform:scaleY(.01) scaleX(0);
+  animation:unfoldIn 1s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+
+  &_close {
+    animation: unfoldOut .7s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+
+  &__overlay {
+    height: 100%;
+    padding: 30px 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+		background: rgba(0, 0, 0, 0.8);
+
+		@include mobile{
+			padding: $header-height 0 0;
+			align-items: end;
+
+			&.center {
+				align-items: center;
+				padding: 0 20px;
+			}
+		}
+  }
+
+  &__content {
+		display: flex;
+		flex-direction: column;
+    width: 100%;
+		max-width: 90vw;
+    height: fit-content;
+    background: #26272B;
+    border-radius: 9px !important;
+		overflow: hidden;
+    color: #fff;
+    padding: 0 !important;
+    outline: none;
+
+    &-close {
+      transform:scale(1);
+      animation: zoomOutAnimation 1s .8s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+    }
+  }
+}
+
+
+@keyframes unfoldIn {
+  0% {
+    transform:scaleY(.005) scaleX(0);
+  }
+  50% {
+    transform:scaleY(.005) scaleX(1);
+  }
+  100% {
+    transform:scaleY(1) scaleX(1);
+  }
+}
+
+@keyframes unfoldOut {
+  0% {
+    transform:scaleY(1) scaleX(1);
+  }
+  50% {
+    transform:scaleY(.005) scaleX(1);
+  }
+  100% {
+    transform:scaleY(.005) scaleX(0);
+  }
+}
