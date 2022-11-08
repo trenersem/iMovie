@@ -17,7 +17,9 @@
   @include flex(center, center);
   flex-direction: column;
   width: 40%;
-  height: 45%;
+	max-width: 550px;
+	min-width: 330px;
+	max-height: 600px;
   border-radius: 8px;
   background-color: rgb(0 0 0 / 0.6);
   padding: 25px;

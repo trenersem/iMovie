@@ -36,7 +36,7 @@ const LoginPage = () => {
       <p className="">
         Or <Link to="/register">Register</Link>
       </p>
-      <p style={{ marginTop: "30px", textAlign: "center" }}>
+      <p style={{ marginTop: "30px", textAlign: "center", fontSize: "14px" }}>
         This registration is formal and is used exclusively for educational
         purposes, please enter the correct email and name to continue working
         with the site, you can enter false data, your data will not be used in
