@@ -3,8 +3,7 @@ import { Routes, Route } from "react-router-dom";
 import LoginPage from "./pages/Login";
 import HomePage from "./pages/Home";
 import Catalog from "./pages/Catalog";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+
 import Detail from "./pages/Detail";
 
 const Router = () => {

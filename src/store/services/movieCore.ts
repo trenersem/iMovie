@@ -78,7 +78,7 @@ export const movieCoreApi = createApi({
       { keyword: string; page: number; category?: category | string }
     >({
       query: ({ keyword, page, category }) =>
-        `https://api.themoviedb.org/3/search/${category}/?api_key=${key}&language=en-US&query=${keyword}&page=${page}&include_adult=false`,
+				`https://api.themoviedb.org/3/search/${category}/?api_key=${key}&language=en-US&page=${page}&include_adult=false&query=${encodeURIComponent(keyword)}`,
       async onQueryStarted(_arg, { dispatch, queryFulfilled, getState }) {
         try {
           const { data } = await queryFulfilled;

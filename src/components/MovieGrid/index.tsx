@@ -36,8 +36,19 @@ const MovieGrid = ({ category }: Props) => {
   const [triggerGetMoreMovies] = useLazyGetMovieListQuery();
   const [triggerGetSearchMovies] = useLazyGetMovieBySearckKeyWordsQuery();
 
+  // const debouncedSearch = React.useRef(
+  //   _.debounce((keyword) => {
+  //     triggerGetSearchMovies({
+  //       keyword: encodeURI(keyword),
+  //       category,
+  //       page,
+  //     });
+  //   }, 2000)
+  // ).current;
+
   useEffect(() => {
     if (keyword) {
+      // debouncedSearch(keyword);
       triggerGetSearchMovies({
         keyword: encodeURI(keyword),
         category,
@@ -73,11 +84,17 @@ const MovieGrid = ({ category }: Props) => {
       <div className="section mb-3">
         <MovieSearch category={category} keyword={keyword} />
       </div>
-      <div className={styles.grid}>
-        {Object.values(movies).map((item, i) => (
-          <MovieCard category={category} item={item} key={i} />
-        ))}
-      </div>
+      {Object.values(movies).length > 0 ? (
+        <div className={styles.grid}>
+          {Object.values(movies).map((item, i) => (
+            <MovieCard category={category} item={item} key={i} />
+          ))}
+        </div>
+      ) : (
+        <h1 style={{ textAlign: "center", margin: "100px 0" }}>
+          Nothing was found for your request
+        </h1>
+      )}
 
       <div
         className={styles.grid__loadmore}
@@ -109,7 +126,7 @@ const MovieSearch = (props: SearchProps) => {
     if (keyword.trim().length > 0) {
       navigation(`/${props.category}/search/${keyword}`);
     }
-  }, [keyword, props.category, history]);
+  }, [keyword, props.category, navigation]);
 
   useEffect(() => {
     const enterEvent = (e: any) => {
